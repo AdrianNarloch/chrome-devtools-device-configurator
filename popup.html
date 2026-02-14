@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Device Configurator</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Device Configurator</h1>
+      <p>Pick a device preset and apply it to the active tab.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Device List</h2>
+        <div id="device-list" class="device-list"></div>
+      </section>
+
+      <section class="panel details">
+        <h2>Details</h2>
+        <form id="device-form">
+          <label>
+            Name
+            <input id="device-name" type="text" readonly />
+          </label>
+          <div class="row">
+            <label>
+              Width (px)
+              <input id="device-width" type="number" min="1" step="1" required />
+            </label>
+            <label>
+              Height (px)
+              <input id="device-height" type="number" min="1" step="1" required />
+            </label>
+          </div>
+          <div class="row">
+            <label>
+              Scale
+              <input id="device-scale" type="number" min="1" max="5" step="0.1" required />
+            </label>
+            <label>
+              Mobile
+              <select id="device-mobile">
+                <option value="true">true</option>
+                <option value="false">false</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            User Agent (optional)
+            <input id="device-ua" type="text" placeholder="Leave empty to keep current" />
+          </label>
+          <div class="actions">
+            <button id="apply" type="submit">Apply to Active Tab</button>
+            <button id="reset" type="button" class="secondary">Reset Emulation</button>
+          </div>
+        </form>
+        <p class="note">
+          This applies emulation via the Chrome Debugger API. Chrome does not currently allow extensions to
+          add native device presets inside DevTools.
+        </p>
+      </section>
+    </main>
+
+    <div id="status" class="status"></div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

@@ -1,1 +1,0 @@
-# chrome-devtools-device-configurator
